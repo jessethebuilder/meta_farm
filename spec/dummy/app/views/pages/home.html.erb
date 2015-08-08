@@ -1,0 +1,4 @@
+<% content_for :meta_farm do -%>
+  <%= MetaFarmTags.new('name', 'description', 'words words', 'url_to_page', 
+			'link_to_image', 'arbicle', defaults: mf_defaults).render(:additional_tags => {:extra_tag => 'textra'}) -%>
+<% end -%>
