@@ -40,8 +40,8 @@ class MetaFarmTags
     html += canonical_link(canonical_url)
     html += render_facebook_meta
     html += render_twitter_meta
-    html += render_authorship_meta
-    html += render_geo_meta
+    html += render_authorship_meta.to_s
+    html += render_geo_meta.to_s
     html += meta_tags(additional_tags)
     # content_for :meta_farm, html.html_safe
     html.html_safe
@@ -52,6 +52,7 @@ class MetaFarmTags
     html += meta_tags(:author => author)
     html += %Q|<link rel="author" href="https://plus.google.com/#{google_author}" />| if google_author
     html += %Q|<link rel="publisher" href="https://plus.google.com/#{google_publisher}" />| if google_publisher  
+    html
   end
   
   
