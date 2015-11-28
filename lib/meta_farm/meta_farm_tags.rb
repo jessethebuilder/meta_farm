@@ -36,7 +36,7 @@ class MetaFarmTags
   def render(skip_title_tag: false, additional_tags: {})
     html = ''
     html += "<title>#{name}</title>\n" unless skip_title_tag
-    html += meta_tags(:description => description.truncate(150), :keywords => keywords, :author => author)
+    html += meta_tags(:description => description.to_s[0..149], :keywords => keywords, :author => author)
     html += canonical_link(canonical_url)
     html += render_facebook_meta
     html += render_twitter_meta
@@ -77,7 +77,7 @@ class MetaFarmTags
   
   def render_facebook_meta
     html = meta_tags('og:title' => name, 'og:url' => canonical_url, 'og:type' => fb_object_type, 'og:image' => image_url,
-              'og:site_name' => site_name, 'og:description' => description.truncate(297))
+              'og:site_name' => site_name, 'og:description' => description.to_s[0..299])
     html += meta_tags('fb:admins' => fb_admins) if fb_admins
     html += meta_tags('fb:app_id' => fb_app_id) if fb_app_id
     html          
@@ -85,7 +85,7 @@ class MetaFarmTags
   
   def render_twitter_meta
     html = meta_tags('twitter:card' => twitter_card_type, 'twitter:url' => canonical_url, 'twitter:title' => name, 
-                     'twitter:description' => description.truncate(200), 'twitter:image' => image_url)
+                     'twitter:description' => description.to_s[0.199], 'twitter:image' => image_url)
     html.html_safe
   end
 end
