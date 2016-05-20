@@ -6,7 +6,7 @@ class MetaFarmTags
                 :author, :google_author, :google_publisher
                 
                 
-  def initialize(name, description, keywords, canonical_url, image_url, fb_object_type, image_height: '1200', image_width: '630', defaults: {})
+  def initialize(name, description, keywords, canonical_url, image_url, fb_object_type, image_height: '630', image_width: '1200', defaults: {})
     defaults.each{ |k, v| eval("self.#{k.to_s} = '#{v}'") } 
     self.name = name
     self.description = description
