@@ -1,12 +1,12 @@
 class MetaFarmTags
-  attr_accessor :name, :description, :keywords, :site_name, :canonical_url, :image_url,
+  attr_accessor :name, :description, :keywords, :site_name, :canonical_url, :image_url, :image_height, :image_width,
                 :fb_app_id, :fb_admins, :fb_object_type, 
                 :twitter_card_type,
                 :city, :state, :zip, :lat, :lon, :business_name, :country,
                 :author, :google_author, :google_publisher
                 
                 
-  def initialize(name, description, keywords, canonical_url, image_url, fb_object_type, defaults: {})
+  def initialize(name, description, keywords, canonical_url, image_url, fb_object_type, image_height: '1200', image_width: '630', defaults: {})
     defaults.each{ |k, v| eval("self.#{k.to_s} = '#{v}'") } 
     self.name = name
     self.description = description
@@ -77,7 +77,8 @@ class MetaFarmTags
   
   def render_facebook_meta
     html = meta_tags('og:title' => name, 'og:url' => canonical_url, 'og:type' => fb_object_type, 'og:image' => image_url,
-              'og:site_name' => site_name, 'og:description' => description.to_s[0..299])
+              'og:site_name' => site_name, 'og:description' => description.to_s[0..299], 
+              'og:image:width' => image_width, 'og:image:height' => image_height )
     html += meta_tags('fb:admins' => fb_admins) if fb_admins
     html += meta_tags('fb:app_id' => fb_app_id) if fb_app_id
     html          
