@@ -14,6 +14,9 @@ class MetaFarmTags
     self.image_url = image_url
     self.fb_object_type = fb_object_type
     self.canonical_url = canonical_url
+    
+    self.image_height = image_height
+    self.image_width = image_width
   end
   
   def load_authorship_meta(author, google_author, google_publisher)
