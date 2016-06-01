@@ -62,7 +62,7 @@ class MetaFarmTags
   def meta_tags(h = {})
     html = ''
     h.each do |k, v|
-      html += %Q|<meta property="#{k.to_s}" content="#{v}" />\n| if v
+      html += %Q|<meta name="#{k.to_s}" content="#{v}" />\n| if v
     end
     html
   end
